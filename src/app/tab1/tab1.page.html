@@ -6,12 +6,41 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content padding>
+  <div class="list">
+  <ion-item>
+    <ion-input type="text" placeholder="Judul Note" [(ngModel)]="jud"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input type="text" placeholder="Isi Note" [(ngModel)]="isi"></ion-input>
+  </ion-item> 
+  <ion-item>
+    <ion-input type="date" placeholder="Tanggal Note" [(ngModel)]="tanggal"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input type="text" placeholder="Nilai Note" [(ngModel)]="nilai"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-button (click) ="TambahFoto()">Tambah Foto</ion-button>
+  </ion-item>
+  </div>
+  <ion-list>
+    <ion-item *ngFor="let todo of judIndex; let i = index">
+      {{todo}}
+      <ion-col class="ion-float-right">
+        <div class="item-note ion-float-right" item-end>
+          <ion-button clear (click) = "updateTask(i)"><ion-icon name="create"></ion-icon></ion-button>
+          <ion-button clear (click) = "deleteTask(i)"><ion-icon name="trash"></ion-icon></ion-button>
+        </div>
+      </ion-col>
+    </ion-item>
+  </ion-list>
+    
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+    <ion-fab-button (click)="save()" (click)="addTask()" (click)="uploadFoto()">
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  
 </ion-content>

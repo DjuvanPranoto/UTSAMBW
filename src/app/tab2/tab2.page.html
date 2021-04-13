@@ -6,12 +6,16 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+<ion-content padding>
+  <ion-list>
+    <ion-item *ngFor="let todo of judList; let i = index">
+      {{todo}}
+      <ion-col class="ion-float-right">
+        <div class="item-note ion-float-right" item-end>
+          <ion-button clear (click) = "updateTask(i)"><ion-icon name="create"></ion-icon></ion-button>
+          <ion-button clear (click) = "deleteTask(i)"><ion-icon name="trash"></ion-icon></ion-button>
+        </div>
+      </ion-col>
+    </ion-item>
+  </ion-list>
 </ion-content>
